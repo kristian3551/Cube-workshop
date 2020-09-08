@@ -16,16 +16,16 @@ router.get('/:id',hasAccess, async (req, res) => {
     loggedIn: res.loggedIn});
 })
 
-router.post('/:id', (req, res) => {
+router.post('/:id', async (req, res) => {
     const id = req.params.id;
     const {
         accessory
     } = req.body;
     
-    Cube.findById(id).then(async (cube) => {
+    await Cube.findById(id).then(async (cube) => {
         const availableAccessory = await Accessory.findOne({name: accessory});
         cube.accessories.push(availableAccessory);
-        cube.save()
+        await cube.save()
     })
 
     res.redirect(`/details/${id}`);

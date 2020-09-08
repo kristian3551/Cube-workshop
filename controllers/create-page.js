@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
             error: 'Description should have more than 20 alphanumeric symbols or digits',
             loggedIn: true
         })
-    else if(!(imageURL.indexOf('http://') == 0 &&
+    else if(!(imageURL.indexOf('http://') == 0 ||
     imageURL.indexOf('https://') == 0))
         return res.status(404).render('create', {
             error: 'ImageURL should start with either http:// or https://',
@@ -55,7 +55,7 @@ router.post('/accessory', (req, res) => {
             error: 'Description should have more than 20 alphanumeric symbols or digits',
             loggedIn: true
         })
-    else if(!(imageURL.indexOf('http://') == 0 &&
+    else if(!(imageURL.indexOf('http://') == 0 ||
     imageURL.indexOf('https://') == 0))
         return res.status(404).render('createAccessory', {
             error: 'ImageURL should start with either http:// or https://',
